@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Check đơn DHTSHOP</title>
+  <link rel="stylesheet" href="style.css"> <!-- Liên kết với file CSS -->
+  <script src="cript.js" defer></script> <!-- Liên kết với file JS -->
+</head>
+<body>
+  <div class="container">
+    <h2>📦 Check đơn hàng DHTSHOP</h2>
+    <!-- Phần nhập Token -->
+    <div class="section">
+      <label>🔐 Nhập Token (Tự động lưu):</label>
+      <input id="token" type="password" placeholder="Nhập token truy cập" />
+      <div class="inline-buttons">
+        <button onclick="saveToken()">💾 Lưu Token</button>
+        <button onclick="clearToken()">❌ Xóa Token</button>
+      </div>
+      <div id="token-status" class="status"></div>
+    </div>
+
+    <!-- Phần chọn loại đơn hàng -->
+    <div class="section">
+      <label for="orderTypeDropdown">Chọn loại đơn hàng:</label>
+      <select id="orderTypeDropdown" onchange="updateValidSkus()">
+        <option value="combo">Đơn Combo</option>
+        <option value="linkcoffee">Đơn LinkCoffee</option>
+        <option value="akira">Đơn Akira</option>
+      </select>
+    </div>
+
+    <!-- Phần chọn ngày mua hàng -->
+    <div class="section">
+      <label>📅 Chọn ngày mua hàng:</label>
+      <select id="dateDropdown">
+        <option value="">-- Nhấn 'Tải ngày' sau khi nhập token --</option>
+      </select>
+      <div class="export-buttons">
+        <button onclick="loadDates()">📥 Tải ngày</button>
+        <button onclick="exportOrders()">⬇️ Export CSV Theo Ngày</button>
+      </div>
+    </div>
+
+    <!-- Phần chọn tuần mua hàng -->
+    <div class="section">
+      <label>📅 Chọn tuần mua hàng:</label>
+      <select id="weekDropdown">
+        <option value="">-- Nhấn 'Tải tuần' sau khi nhập token --</option>
+      </select>
+      <div class="export-buttons">
+        <button onclick="loadWeeks()">📥 Tải tuần</button>
+        <button onclick="exportOrdersByWeek()">⬇️ Export CSV Theo Tuần</button>
+      </div>
+    </div>
+
+    <!-- Link tải xuống CSV -->
+    <a id="downloadLink" style="display:none;">Download CSV</a>
+  </div>
+</body>
+</html>
